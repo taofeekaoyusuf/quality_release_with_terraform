@@ -27,10 +27,6 @@ stages:
             inputs:
               terraformVersion: "latest"
 
-          #- task: TerraformInstaller@0
-          #displayName: Install Terraform
-          #inputs:
-          #terraformVersion: '1.2.9'
           - task: TerraformCLI@0
             displayName: Terraform Init
             inputs:

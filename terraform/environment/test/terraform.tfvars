@@ -5,7 +5,7 @@ client_secret = "mjU8Q~t3XFnYpHl4QSJmwZ8oj2CuofVHLCrncb4l"
 tenant_id = "f958e84a-92b8-439f-a62d-4f45996b6d07"
 
 # Resource Group/Location
-location = "SouthCentralUS"
+location = "eastUS"
 resource_group = "Azuredevops" # The same resource_group use to create the backend state and container
 application_type = "quality_release_with_terraform"
 

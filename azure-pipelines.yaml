@@ -136,7 +136,7 @@ stages:
                     ConnectionType: "AzureRM"
                     azureSubscription: "myserviceconnectionlink"
                     appType: "webApp"
-                    WebAppName: "quality_release_with_terraform-AppService"
+                    WebAppName: "qualityreleasewithterraform-AppService"
                     packageForLinux: "$(Pipeline.Workspace)/drop-fakerestapi/fakerestapi-$(Build.BuildId).zip"
                     DeploymentType: zipDeploy
 

@@ -6,7 +6,7 @@ variables:
 stages:
   - stage: Provision
     jobs:
-      - job: TerrafromTasks
+      - job: TerraformTasks
         displayName: Terraform Tasks
         pool: myAgentPool
         steps:
@@ -62,7 +62,7 @@ stages:
           - task: TerraformCLI@0
             displayName: "Terraform Plan"
             inputs:
-              command: "plan"
+              command: "plan -lock=false"
               environmentServiceName: "myserviceconnectionlink"
               allowTelemetryCollection: true
               workingDirectory: "$(System.DefaultWorkingDirectory)/terraform/environment/test"

@@ -8,10 +8,10 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    storage_account_name = "dhack"
-    container_name       = "dhack14150"
-    key                  = "terraform.dhack"
-    access_key           = "xKuub1TlKQAlw7OtzuHMmXuVFz0Te03N53qap5UUGUhdWLTfdUlljicrhdYwZ1m0n2depUd3Rxaq+AStDISHtQ=="
+    storage_account_name = ""
+    container_name       = ""
+    key                  = ""
+    access_key           = ""
   }
 }
 

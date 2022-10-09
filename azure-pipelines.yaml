@@ -6,7 +6,7 @@ variables:
 stages:
   - stage: Provision
     jobs:
-      - job: TerrafromTasks
+      - job: TerraformTasks
         displayName: Terraform Tasks
         pool: myAgentPool
         steps:
@@ -305,3 +305,4 @@ stages:
   #           inputs:
   #             targetPath: "$(System.DefaultWorkingDirectory)/log/jmeter"
   #             artifactName: "drop-jmeter-logs"
+

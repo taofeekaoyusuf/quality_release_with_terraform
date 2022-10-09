@@ -10,7 +10,7 @@ terraform {
   backend "azurerm" {
     storage_account_name = "dhack"
     container_name       = "dhack14150"
-    key                  = ""
+    key                  = "terraform.dhack"
     access_key           = "xKuub1TlKQAlw7OtzuHMmXuVFz0Te03N53qap5UUGUhdWLTfdUlljicrhdYwZ1m0n2depUd3Rxaq+AStDISHtQ=="
   }
 }
@@ -18,7 +18,6 @@ terraform {
 data "azurerm_resource_group" "test" {
   name = "Azuredevops"
 }
-
 
 module "network" {
   source               = "../../modules/network"
@@ -66,3 +65,4 @@ module "vm" {
   subnet_id            = "${module.network.subnet_id_test}"
   public_ip            = "${module.publicip.public_ip_address_id}"
 }
+

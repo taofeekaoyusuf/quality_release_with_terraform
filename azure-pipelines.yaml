@@ -62,7 +62,7 @@ stages:
           - task: TerraformCLI@0
             displayName: "Terraform Plan"
             inputs:
-              command: "plan -lock=false"
+              command: "plan"
               environmentServiceName: "myserviceconnectionlink"
               allowTelemetryCollection: true
               workingDirectory: "$(System.DefaultWorkingDirectory)/terraform/environment/test"
@@ -305,3 +305,4 @@ stages:
   #           inputs:
   #             targetPath: "$(System.DefaultWorkingDirectory)/log/jmeter"
   #             artifactName: "drop-jmeter-logs"
+

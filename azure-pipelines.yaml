@@ -36,7 +36,7 @@ stages:
               backendType: "azurerm"
               backendServiceArm: "myserviceconnectionlink"
               backendAzureRmResourceGroupName: "Azuredevops"
-              backendAzureRmStorageAccountName: "dhack14150"
+              backendAzureRmStorageAccountName: "dhack24683"
               backendAzureRmContainerName: "dhack"
               allowTelemetryCollection: true
 
@@ -143,7 +143,7 @@ stages:
       - deployment: VMDeploy
         displayName: Deploy Virtual Machine
         environment:
-          name: "quality_release_with_terraform-Deployment"
+          name: "qualityreleasewithterraform-Deployment"
           resourceType: VirtualMachine
         strategy:
           runOnce:

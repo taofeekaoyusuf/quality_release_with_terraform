@@ -143,7 +143,7 @@ stages:
       - deployment: VMDeploy
         displayName: Deploy Virtual Machine
         environment:
-          name: "qualityreleasewithterraform-Deployment"
+          name: "test"
           resourceType: VirtualMachine
         strategy:
           runOnce:
@@ -305,4 +305,3 @@ stages:
   #           inputs:
   #             targetPath: "$(System.DefaultWorkingDirectory)/log/jmeter"
   #             artifactName: "drop-jmeter-logs"
-

@@ -142,9 +142,8 @@ stages:
 
       - deployment: VMDeploy
         displayName: Deploy Virtual Machine
-        environment:
-          name: "myEnvironment"
-          resourceType: VirtualMachine
+        environment: "myEnvironment"
+        # resourceType: VirtualMachine
         strategy:
           runOnce:
             deploy:

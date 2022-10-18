@@ -144,7 +144,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">authors/books/{idBook}</stringProp>
+          <stringProp name="HTTPSampler.path">authors/books/${idBook}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -156,9 +156,9 @@
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-            <stringProp name="filename">/home/dfnt/Documents/Mine/DevOps/Azure DevOps Engineer Nanodegree/Projects/quality_release_with_terraform/automatedtesting/jmeter/variables/idsbook.csv</stringProp>
+            <stringProp name="filename">/home/dfnt/Documents/Mine/DevOps/Azure DevOps Engineer Nanodegree/Projects/quality_release_with_terraform/automatedtesting/jmeter/variables/idBook.csv</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="variableNames">idsbook</stringProp>
+            <stringProp name="variableNames">idBook</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <stringProp name="delimiter">,</stringProp>
             <boolProp name="quotedData">false</boolProp>
@@ -176,7 +176,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">authors/books/1</stringProp>
+          <stringProp name="HTTPSampler.path">authors/books/${id}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -188,9 +188,9 @@
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-            <stringProp name="filename">/home/dfnt/Documents/Mine/DevOps/Azure DevOps Engineer Nanodegree/Projects/quality_release_with_terraform/automatedtesting/jmeter/variables/ids.csv</stringProp>
+            <stringProp name="filename">/home/dfnt/Documents/Mine/DevOps/Azure DevOps Engineer Nanodegree/Projects/quality_release_with_terraform/automatedtesting/jmeter/variables/id.csv</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="variableNames">ids</stringProp>
+            <stringProp name="variableNames">id</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <stringProp name="delimiter">,</stringProp>
             <boolProp name="quotedData">false</boolProp>
@@ -208,7 +208,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">api/Authors/{id}</stringProp>
+          <stringProp name="HTTPSampler.path">api/Authors/${id}</stringProp>
           <stringProp name="HTTPSampler.method">PUT</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -220,9 +220,9 @@
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-            <stringProp name="filename">/home/dfnt/Documents/Mine/DevOps/Azure DevOps Engineer Nanodegree/Projects/quality_release_with_terraform/automatedtesting/jmeter/variables/ids.csv</stringProp>
+            <stringProp name="filename">/home/dfnt/Documents/Mine/DevOps/Azure DevOps Engineer Nanodegree/Projects/quality_release_with_terraform/automatedtesting/jmeter/variables/id.csv</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="variableNames">ids</stringProp>
+            <stringProp name="variableNames">id</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <stringProp name="delimiter">,</stringProp>
             <boolProp name="quotedData">false</boolProp>
@@ -252,7 +252,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">api/Authors/{id}</stringProp>
+          <stringProp name="HTTPSampler.path">api/Authors/${id}</stringProp>
           <stringProp name="HTTPSampler.method">DELETE</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -266,13 +266,13 @@
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">/home/dfnt/Documents/Mine/DevOps/Azure DevOps Engineer Nanodegree/Projects/quality_release_with_terraform/automatedtesting/jmeter/variables/ids.csv</stringProp>
+            <stringProp name="filename">/home/dfnt/Documents/Mine/DevOps/Azure DevOps Engineer Nanodegree/Projects/quality_release_with_terraform/automatedtesting/jmeter/variables/id.csv</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <boolProp name="quotedData">false</boolProp>
             <boolProp name="recycle">true</boolProp>
             <stringProp name="shareMode">shareMode.all</stringProp>
             <boolProp name="stopThread">false</boolProp>
-            <stringProp name="variableNames">ids</stringProp>
+            <stringProp name="variableNames">id</stringProp>
           </CSVDataSet>
           <hashTree/>
         </hashTree>

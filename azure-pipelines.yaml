@@ -170,12 +170,18 @@ stages:
         displayName: Integration Tests For UI and Selenium
         pool: myAgentPool
         steps:
-          - task: Npm@1
+          - task: CmdLine@2
+            displayName: Install NPM and Node
             inputs:
-              command: 'install'
-              workingDir: '$(System.DefaultWorkingDirectory)'
-              customRegistry: 'useFeed'
-              customFeed: 'e01daa59-2e3d-4a88-90b8-a5b32187f60a'
+              script: |
+                wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+                export NVM_DIR="$HOME/.nvm"
+                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+                [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+                source ~/.bashrc
+                nvm install node && nvm install v10.24.1 && nvm install v12.22.12 && nvm install v14.20.1 && nvm install v16.18.0 && nvm install --lts
+                nvm use 12.22.12
+              workingDirectory: $(System.DefaultWorkingDirectory)
           - task: CmdLine@2
             displayName: Install Newman
             inputs:

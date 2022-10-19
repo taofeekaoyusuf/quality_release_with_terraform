@@ -71,6 +71,8 @@ stages:
             displayName: Terraform Apply
             inputs:
               command: "apply"
+              commandOptions: |
+                -auto-approve
               environmentServiceName: "myserviceconnectionlink"
               workingDirectory: "$(System.DefaultWorkingDirectory)/terraform/environment/test"
               allowTelemetryCollection: true
@@ -102,6 +104,7 @@ stages:
               includeRootFolder: false
               archiveType: "zip"
               archiveFile: "$(Build.ArtifactStagingDirectory)/selenium-$(Build.BuildId).zip"
+              verbose: true
           - task: PublishPipelineArtifact@1
             displayName: Publish Selenium Artifact
             inputs:
@@ -122,6 +125,7 @@ stages:
               ArtifactName: "drop-jtest"
 
   - stage: Deploy
+    displayName: "Deployment"
     jobs:
       - deployment: deploy_fakerestapi
         displayName: Deploy FakeRestAPI
@@ -139,6 +143,7 @@ stages:
                     WebAppName: "qualityreleasewithterraform-AppService"
                     packageForLinux: "$(Pipeline.Workspace)/drop-fakerestapi/fakerestapi-$(Build.BuildId).zip"
                     DeploymentType: zipDeploy
+                    TakeAppOfflineFlag: false
 
       - deployment: VMDeploy
         displayName: Deploy Virtual Machine
@@ -165,46 +170,89 @@ stages:
                   displayName: Configure VM
 
   - stage: Test
+    displayName: "App Integration Testing"
     jobs:
       - job: IntegrationTests
         displayName: Integration Tests For UI and Selenium
         pool: myAgentPool
         steps:
-          - task: CmdLine@2
-            displayName: Install NPM and Node
+          # - task: CmdLine@2
+          #   displayName: Install NPM and Node
+          #   inputs:
+          #     script: |
+          #       wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+          #       export NVM_DIR="$HOME/.nvm"
+          #       [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+          #       [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+          #       source ~/.bashrc
+          #       nvm install node && nvm install v10.24.1 && nvm install v12.22.12 && nvm install v14.20.1 && nvm install v16.18.0 && nvm install --lts
+          #       nvm use 12.22.12
+          #     workingDirectory: $(System.DefaultWorkingDirectory)
+          - task: NodeTool@0
+            displayName: Install Node v12.X
             inputs:
-              script: |
-                wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-                export NVM_DIR="$HOME/.nvm"
-                [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-                [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-                source ~/.bashrc
-                nvm install node && nvm install v10.24.1 && nvm install v12.22.12 && nvm install v14.20.1 && nvm install v16.18.0 && nvm install --lts
-                nvm use 12.22.12
-              workingDirectory: $(System.DefaultWorkingDirectory)
-          - task: CmdLine@2
+              versionSpec: "12.x"
+          - task: Bash@3
             displayName: Install Newman
             inputs:
-              script: sudo npm install -g newman
+              targetType: "inline"
+              script: |
+                npm install -g newman
+                # Create log directory
+                mkdir -p log/newman
               workingDirectory: $(System.DefaultWorkingDirectory)
-          - task: CmdLine@2
-            displayName: Apply Regression Tests
-            continueOnError: true
+          - task: Bash@3
+            displayName: "Newman Regression Test"
             inputs:
-              script: newman run ./automatedtesting/postman/regression.json --reporters cli,junit --reporter-junit-export ./automatedtesting/postman/TEST-regression.xml
-              workingDirectory: $(System.DefaultWorkingdirectory)
-          - task: CmdLine@2
-            displayName: Apply Validation Tests
-            continueOnError: true
+              targetType: "inline"
+              script: |
+                newman run automatedtesting/postman/regression_test.json \
+                          -e automatedtesting/postman/marco_paspuel_webapi_env.json \
+                          --reporters cli,junit \
+                          --reporter-junit-export log/newman/regression-test.xml \
+                          --suppress-exit-code
+          - task: Bash@3
+            displayName: "Newman validation test"
             inputs:
-              script: newman run ./automatedtesting/postman/validation.json --reporters cli,junit --reporter-junit-export ./automatedtesting/postman/TEST-validation.xml
-              workingDirectory: $(System.DefaultWorkingdirectory)
+              targetType: "inline"
+              script: |
+                newman run automatedtesting/postman/validation_test.json \
+                          -e automatedtesting/postman/marco_paspuel_webapi_env.json \
+                          --reporters cli,junit \
+                          --reporter-junit-export log/newman/validation-test.xml \
+                          --suppress-exit-code
+          - task: PublishPipelineArtifact@1
+            displayName: "Publish Newman Logs"
+            inputs:
+              targetPath: "$(System.DefaultWorkingDirectory)/log/newman"
+              artifactName: "drop-newman-logs"
+
           - task: PublishTestResults@2
-            displayName: Publish Test Results
+            displayName: "Publish Newman Test Results"
             inputs:
-              testResultsFiles: "**/TEST-*.xml"
-              searchFolder: "$(System.DefaultWorkingDirectory)/automatedtesting/postman/"
-              publishRunAttachments: true
+              testRunner: "JUnit"
+              searchFolder: "$(System.DefaultWorkingDirectory)/log/newman"
+              testResultsFiles: "*.xml"
+              mergeTestResults: true
+              testRunTitle: "Publish Newman test results"
+          # - task: CmdLine@2
+          #   displayName: Apply Regression Tests
+          #   continueOnError: true
+          #   inputs:
+          #     script: newman run ./automatedtesting/postman/regression.json --reporters cli,junit --reporter-junit-export ./automatedtesting/postman/TEST-regression.xml
+          #     workingDirectory: $(System.DefaultWorkingdirectory)
+          # - task: CmdLine@2
+          #   displayName: Apply Validation Tests
+          #   continueOnError: true
+          #   inputs:
+          #     script: newman run ./automatedtesting/postman/validation.json --reporters cli,junit --reporter-junit-export ./automatedtesting/postman/TEST-validation.xml
+          #     workingDirectory: $(System.DefaultWorkingdirectory)
+          # - task: PublishTestResults@2
+          #   displayName: Publish Test Results
+          #   inputs:
+          #     testResultsFiles: "**/TEST-*.xml"
+          #     searchFolder: "$(System.DefaultWorkingDirectory)/automatedtesting/postman/"
+          #    publishRunAttachments: true
 
       - job: UITests
         displayName: Selenuim UI Tests
@@ -224,9 +272,11 @@ stages:
             inputs:
               targetType: "inline"
               script: |
-                #install chromium & selenium
+                # Installing Chromium & Selenium
                 sudo apt-get install -y chromium-browser
+                python3 -m pip install --upgrade pip
                 pip3 install selenium
+                python3 -c "import selenium; print('Selenium Version:', selenium.__version__)"
 
                 #install chromedriver & export path
                 if [ ! -f $(Pipeline.Workspace)/chromedriver ]; then

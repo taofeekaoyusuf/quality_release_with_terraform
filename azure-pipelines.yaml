@@ -172,7 +172,7 @@ stages:
         steps:
           - task: NodeAndNpmTool@1
             inputs:
-              versionSpec: '10.x'
+              versionSpec: "10.x"
               checkLatest: true
           - task: CmdLine@2
             displayName: Install Newman

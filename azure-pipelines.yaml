@@ -191,13 +191,13 @@ stages:
             displayName: Apply Regression Tests
             continueOnError: true
             inputs:
-              script: "newman run ./automatedtesting/postman/regression.json --reporters cli,junit --reporter-junit-export ./automatedtesting/postman/TEST-regression.xml"
+              script: newman run ./automatedtesting/postman/regression.json --reporters cli,junit --reporter-junit-export ./automatedtesting/postman/TEST-regression.xml
               workingDirectory: $(System.DefaultWorkingdirectory)
           - task: CmdLine@2
             displayName: Apply Validation Tests
             continueOnError: true
             inputs:
-              script: "newman run ./automatedtesting/postman/validation.json --reporters cli,junit --reporter-junit-export ./automatedtesting/postman/TEST-validation.xml"
+              script: newman run ./automatedtesting/postman/validation.json --reporters cli,junit --reporter-junit-export ./automatedtesting/postman/TEST-validation.xml
               workingDirectory: $(System.DefaultWorkingdirectory)
           - task: PublishTestResults@2
             displayName: Publish Test Results

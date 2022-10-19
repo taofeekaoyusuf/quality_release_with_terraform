@@ -172,10 +172,10 @@ stages:
         steps:
           - task: Npm@1
             inputs:
-              command: 'install'
-              workingDir: '$(System.DefaultWorkingDirectory)'
-              customRegistry: 'useFeed'
-              customFeed: 'e01daa59-2e3d-4a88-90b8-a5b32187f60a'
+              command: "install"
+              workingDir: "$(System.DefaultWorkingDirectory)"
+              customRegistry: "useFeed"
+              customFeed: "e01daa59-2e3d-4a88-90b8-a5b32187f60a"
           - task: CmdLine@2
             displayName: Install Newman
             inputs:

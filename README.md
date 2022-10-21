@@ -4,7 +4,7 @@ Building a CI/CD pipeline with Azure DevOps.
 
 ### Status
 
-[![Build Status](https://dev.azure.com/marcopaspuel/ensuring-quality-releases-azure-devops/_apis/build/status/marcoBrighterAI.ensuring-quality-releases-azure-devops?branchName=main)](https://dev.azure.com/marcopaspuel/ensuring-quality-releases-azure-devops/_build/latest?definitionId=9&branchName=main)
+[![Build Status](https://dev.azure.com/marcopaspuel/ensuring-quality-releases-azure-devops/_apis/build/status/marcoBrighterAI.ensuring-quality-releases-azure-devops?branchName=main)](https://dev.azure.com//ensuring-quality-releases-azure-devops/_build/latest?definitionId=9&branchName=main)
 
 ### Introduction
 
@@ -256,11 +256,6 @@ ssh user@PublicIP
 - c) Click `Create alter rule`
 
 ### Automated Testing Output
-
-#### Environment Creation & Deployment
-
-##### Provisioning Infrastructure
-
 ###### Completed CI/CD Pipeline
 
 ![pycharm1](images/Full_Azure_Pipeline.png )
@@ -268,67 +263,49 @@ ssh user@PublicIP
 Part of what was deployed in the CI/CD pipeline is the REST API and it is as shown in the `Deployed REST API`.
 ###### Deployed REST API
 
-![pycharm3](images/fake_rest_api.png)
+![pycharm2](images/fake_rest_api.png)
 
 #### Test
 
 ##### UI Test
 
-###### Log output of Run UI Tests with Selenium on VM agent
+###### Output of running tests with Selenium on VM agent locally
 
-![pycharm4](images/4_run_ui_test_selenium.png)
+![pycharm3](images/selenium_terminal_output.png)
 
 ##### Integration Tests
 
-###### Log output of Run Newman Regression Test
+###### Selenium Integration Tests in the CI/CD pipeline
 
-![pycharm5](images/5_newman_regresing_test.png)
+![pycharm4](images/Pipeline_Run_Successful1.png)
 
-###### Log output of Run Newman Validation Test
+###### Different Runs
 
-![pycharm6](images/6_newman_validation_tests.png)
+![pycharm5](images/Pipeline_Runs.png)
 
-###### Newman Tests Results Summary
+##### Stress and Endurance Tests
 
-![pycharm6_1](images/6_1_newman_test_results_summary.png)
+###### Outputs of JMeter Stress and Endurance Tests
 
-###### Newman Tests Results
+![pycharm6](images/JMeter_Endurance_and_Stress_Test.png)
 
-![pycharm6_2](images/6_2_newman_test_results.png)
+###### Outputs of JMeter Stress Test Summary
 
-##### Stress Tests
+![pycharm7](images/stressTestResultOutputSummary.png)
 
-###### Log output of Run JMeter Stress Tests
+###### Outputs of JMeter Endurance Test Summary
 
-![pycharm7](images/7_jmeter_stress_tests.png)
-
-###### Log output of Run JMeter Endurance Tests
-
-![pycharm8](images/8_jmeter_endurance_tests.png)
-
-#### Successful execution of the CI/CD Pipeline
-
-![pycharm9](images/9_excecution_of_the_pipeline.png)
+![pycharm8](images/EnduranceTestResultSummary.png)
 
 ### Monitoring & Observability
 
-#### Alert rule in the Azure Portal
+#### Error received that triggerd the Email alert
 
-![pycharm11_1](images/11_1_alert_rule.png)
+![pycharm9](images/Error404Page_Display.png)
 
 #### Email received when the 404 alert was triggered
 
-![pycharm11](images/11_404_alert_email.png)
-
-#### Appservice metrics
-
-![pycharm12](images/12_app_serivice_metrics.png)
-
-![pycharm12_1](images/12_1_appservice_metrics.png)
-
-#### Log Analytics Workspace Query
-
-![pycharm10](images/10_log_analylics_workspace.png)
+![pycharm10](images/404-Email_Alert.png)
 
 ### Helpful resources from Microsoft
 

@@ -194,8 +194,8 @@ stages:
             inputs:
               targetType: "inline"
               script: |
-                newman run automatedtesting/postman/RegressionTestSuite.postman_collection.json \
-                          -e automatedtesting/postman/regression_env.postman_environment.json \
+                newman run automatedtesting/postman/regression_test.postman_collection.json \
+                          -e automatedtesting/postman/dhackability_env.postman_environment.json \
                           --reporters cli,junit \
                           --reporter-junit-export log/newman/regression-test.xml \
                           --suppress-exit-code
@@ -204,8 +204,8 @@ stages:
             inputs:
               targetType: "inline"
               script: |
-                newman run automatedtesting/postman/ValidationTestSuite.postman_collection.json \
-                          -e automatedtesting/postman/regression_env.postman_environment.json\
+                newman run automatedtesting/postman/validation_test.postman_collection.json \
+                          -e automatedtesting/postman/dhackability_env.postman_environment.json \
                           --reporters cli,junit \
                           --reporter-junit-export log/newman/validation-test.xml \
                           --suppress-exit-code

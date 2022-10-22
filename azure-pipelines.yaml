@@ -194,7 +194,7 @@ stages:
             inputs:
               targetType: "inline"
               script: |
-                newman run automatedtesting/postman/regression_test.json \
+                newman run automatedtesting/postman/RegressionTestSuite.postman_collection.json \
                           -e automatedtesting/postman/marco_paspuel_webapi_env.json \
                           --reporters cli,junit \
                           --reporter-junit-export log/newman/regression-test.xml \
@@ -204,7 +204,7 @@ stages:
             inputs:
               targetType: "inline"
               script: |
-                newman run automatedtesting/postman/validation_test.json \
+                newman run automatedtesting/postman/ValidationTestSuite.postman_collection.json \
                           -e automatedtesting/postman/marco_paspuel_webapi_env.json \
                           --reporters cli,junit \
                           --reporter-junit-export log/newman/validation-test.xml \

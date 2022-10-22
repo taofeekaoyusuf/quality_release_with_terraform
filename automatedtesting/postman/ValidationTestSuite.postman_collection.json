@@ -125,7 +125,7 @@
 							"pm.test(\"Successful response\", function() {",
 							"    pm.expect(pm.response.text()).to.include(\"success\")",
 							"});",
-							"var json = pm.response.json();",
+							"",
 							"pm.test(\"Status Code is 200\", function() {",
 							"    pm.response.to.have.status(200)",
 							"});"

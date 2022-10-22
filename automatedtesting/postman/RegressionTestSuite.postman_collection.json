@@ -36,16 +36,11 @@
 					}
 				},
 				"url": {
-					"raw": "http://dummy.restapiexample.com/api/v1/create",
-					"protocol": "http",
+					"raw": "{{url}}/create",
 					"host": [
-						"dummy",
-						"restapiexample",
-						"com"
+						"{{url}}"
 					],
 					"path": [
-						"api",
-						"v1",
 						"create"
 					]
 				}
@@ -115,41 +110,6 @@
 			"response": []
 		},
 		{
-			"name": "Update Employee",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Successful response\", function() {",
-							"    pm.expect(pm.response.text()).to.include(\"success\")",
-							"});",
-							"var json = pm.response.json();",
-							"pm.test(\"Status Code is 200\", function() {",
-							"    pm.response.to.have.status(200)",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/update/{{id}}",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"update",
-						"{{id}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Delete Employee",
 			"event": [
 				{
@@ -178,6 +138,41 @@
 					],
 					"path": [
 						"delete",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful response\", function() {",
+							"    pm.expect(pm.response.text()).to.include(\"success\")",
+							"});",
+							"",
+							"pm.test(\"Status Code is 200\", function() {",
+							"    pm.response.to.have.status(200)",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/update/{{id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"update",
 						"{{id}}"
 					]
 				}

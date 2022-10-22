@@ -36,7 +36,7 @@ stages:
               backendType: "azurerm"
               backendServiceArm: "myserviceconnectionlink"
               backendAzureRmResourceGroupName: "Azuredevops"
-              backendAzureRmStorageAccountName: "dhack12521"
+              backendAzureRmStorageAccountName: "dhack31967"
               backendAzureRmContainerName: "dhack"
               allowTelemetryCollection: true
 
@@ -176,18 +176,6 @@ stages:
         displayName: Integration Tests For UI and Selenium
         pool: myAgentPool
         steps:
-          # - task: CmdLine@2
-          #   displayName: Install NPM and Node
-          #   inputs:
-          #     script: |
-          #       wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-          #       export NVM_DIR="$HOME/.nvm"
-          #       [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-          #       [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-          #       source ~/.bashrc
-          #       nvm install node && nvm install v10.24.1 && nvm install v12.22.12 && nvm install v14.20.1 && nvm install v16.18.0 && nvm install --lts
-          #       nvm use 12.22.12
-          #     workingDirectory: $(System.DefaultWorkingDirectory)
           - task: NodeTool@0
             displayName: Install Node v12.X
             inputs:
@@ -235,24 +223,6 @@ stages:
               testResultsFiles: "*.xml"
               mergeTestResults: true
               testRunTitle: "Publish Newman test results"
-          # - task: CmdLine@2
-          #   displayName: Apply Regression Tests
-          #   continueOnError: true
-          #   inputs:
-          #     script: newman run ./automatedtesting/postman/regression.json --reporters cli,junit --reporter-junit-export ./automatedtesting/postman/TEST-regression.xml
-          #     workingDirectory: $(System.DefaultWorkingdirectory)
-          # - task: CmdLine@2
-          #   displayName: Apply Validation Tests
-          #   continueOnError: true
-          #   inputs:
-          #     script: newman run ./automatedtesting/postman/validation.json --reporters cli,junit --reporter-junit-export ./automatedtesting/postman/TEST-validation.xml
-          #     workingDirectory: $(System.DefaultWorkingdirectory)
-          # - task: PublishTestResults@2
-          #   displayName: Publish Test Results
-          #   inputs:
-          #     testResultsFiles: "**/TEST-*.xml"
-          #     searchFolder: "$(System.DefaultWorkingDirectory)/automatedtesting/postman/"
-          #    publishRunAttachments: true
 
       - job: UITests
         displayName: Selenuim UI Tests

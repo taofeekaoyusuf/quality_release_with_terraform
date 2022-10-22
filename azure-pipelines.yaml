@@ -195,7 +195,7 @@ stages:
               targetType: "inline"
               script: |
                 newman run automatedtesting/postman/RegressionTestSuite.postman_collection.json \
-                          -e automatedtesting/postman/marco_paspuel_webapi_env.json \
+                          -e automatedtesting/postman/regression_env.postman_environment.json \
                           --reporters cli,junit \
                           --reporter-junit-export log/newman/regression-test.xml \
                           --suppress-exit-code
@@ -205,7 +205,7 @@ stages:
               targetType: "inline"
               script: |
                 newman run automatedtesting/postman/ValidationTestSuite.postman_collection.json \
-                          -e automatedtesting/postman/marco_paspuel_webapi_env.json \
+                          -e automatedtesting/postman/regression_env.postman_environment.json\
                           --reporters cli,junit \
                           --reporter-junit-export log/newman/validation-test.xml \
                           --suppress-exit-code

@@ -1,11 +1,11 @@
 # Azure subscription vars
-subscription_id = "4e780871-9657-43bf-b521-9c73706b76b1"
-client_id       = "bc4703e9-b7c0-4576-b4d9-84a9ff2c53d4"
-client_secret   = "OsI8Q~OM2Zd5pJPaBHEC8zsI51D5DJ1G5ruEbdoS"
-tenant_id       = "f958e84a-92b8-439f-a62d-4f45996b6d07"
+client_id       = "eb95f4d2-1108-41ca-9fc2-d4ddf650461e"
+client_secret   = "od88Q~~FNugpKKewtCmcjTmpZEo5QDxQSKmI8cIV"
+subscription_id = "9264ae45-f6c6-47e0-9199-fa1b3e14415e"
+tenant_id       = "9264ae45-f6c6-47e0-9199-fa1b3e14415e"
 
 # Resource Group/Location
-location         = "East US"
+location         = "South Central US"
 resource_group   = "Azuredevops" # The same resource_group use to create the backend state and container
 application_type = "qualityreleasewithterraform"
 

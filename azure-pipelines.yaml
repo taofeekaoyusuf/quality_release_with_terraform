@@ -194,21 +194,15 @@ stages:
             inputs:
               targetType: "inline"
               script: |
-                newman run automatedtesting/postman/RegressionTestSuite.postman_collection.json \
-                          -e automatedtesting/postman/regression_env.postman_environment.json \
-                          --reporters cli,junit \
-                          --reporter-junit-export log/newman/regression-test.xml \
-                          --suppress-exit-code
+                newman run automatedtesting/postman/regression.json --reporters cli,junit --reporter-junit-export log/newman/regression-test.xml --suppress-exit-code
+                          # -e automatedtesting/postman/regression_env.postman_environment.json \
           - task: Bash@3
             displayName: "Newman validation test"
             inputs:
               targetType: "inline"
               script: |
-                newman run automatedtesting/postman/ValidationTestSuite.postman_collection.json \
-                          -e automatedtesting/postman/regression_env.postman_environment.json \
-                          --reporters cli,junit \
-                          --reporter-junit-export log/newman/validation-test.xml \
-                          --suppress-exit-code
+                newman run automatedtesting/postman/validation.json --reporters cli,junit --reporter-junit-export log/newman/validation-test.xml --suppress-exit-code
+                          # -e automatedtesting/postman/regression_env.postman_environment.json \
           - task: PublishPipelineArtifact@1
             displayName: "Publish Newman Logs"
             inputs:

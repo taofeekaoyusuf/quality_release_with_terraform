@@ -4,7 +4,7 @@ Building a CI/CD pipeline with Azure DevOps.
 
 ### Status
 
-[![Build Status](https://dev.azure.com/marcopaspuel/ensuring-quality-releases-azure-devops/_apis/build/status/marcoBrighterAI.ensuring-quality-releases-azure-devops?branchName=main)](https://dev.azure.com//ensuring-quality-releases-azure-devops/_build/latest?definitionId=9&branchName=main)
+[![Build Status](https://dev.azure.com/odluser213366/quality_release_with_terraform/_apis/build/status/taofeekaoyusuf.quality_release_with_terraform?branchName=main)](https://dev.azure.com/odluser213366/quality_release_with_terraform/_build/latest?definitionId=1&branchName=main)
 
 ### Introduction
 
@@ -258,12 +258,17 @@ ssh user@PublicIP
 ### Automated Testing Output
 ###### Completed CI/CD Pipeline
 
-![pycharm1](images/Full_Azure_Pipeline.png )
+
+![pycharm0](images/02_Azure-pipeline_SuccessfulExecution.png)
 
 Part of what was deployed in the CI/CD pipeline is the REST API and it is as shown in the `Deployed REST API`.
 ###### Deployed REST API
 
-![pycharm2](images/fake_rest_api.png)
+![pycharm1](images/01_Terraform_Apply.png)
+
+![pycharm2](images/03_Deploying_AzureWebApp.png)
+
+![pycharm2.2](images/03_FakeRestAPI_link.png)
 
 #### Test
 
@@ -271,41 +276,88 @@ Part of what was deployed in the CI/CD pipeline is the REST API and it is as sho
 
 ###### Output of running tests with Selenium on VM agent locally
 
-![pycharm3](images/selenium_terminal_output.png)
-
-##### Integration Tests
+![pycharm3](images/07_selenium_terminal_output.png)
 
 ###### Selenium Integration Tests in the CI/CD pipeline
 
-![pycharm4](images/Pipeline_Run_Successful1.png)
+![pycharm4](images/07_Selenium_TestResults.png)
 
-###### Different Runs
+##### Integration Tests
+###### Newman Regression Test Runner
 
-![pycharm5](images/Pipeline_Runs.png)
+![pycharm5](images/03_Newman_RegressionTest.png)
+
+###### Newman Validation Test Runner
+
+![pycharm5.5](images/04_Newman_ValidationTest.png)
+
+###### Newman Test Results Summary
+
+![pycharm5.5](images/05_Newman_TestResultSummary.png)
+
+###### Newman Test Results Summary
+
+![pycharm5.5](images/06_Newman_TestResults.png)
 
 ##### Stress and Endurance Tests
 
-###### Outputs of JMeter Stress and Endurance Tests
-
-![pycharm6](images/JMeter_Endurance_and_Stress_Test.png)
+###### Outputs of JMeter Stress and Endurance Test Results
 
 ###### Outputs of JMeter Stress Test Summary
 
-![pycharm7](images/stressTestResultOutputSummary.png)
+![pycharm6](images/08_JMeter_StressTest.png)
 
 ###### Outputs of JMeter Endurance Test Summary
 
-![pycharm8](images/EnduranceTestResultSummary.png)
+![pycharm8](images/09_JMeter_EnduranceTest.png)
 
 ### Monitoring & Observability
 
 #### Error received that triggerd the Email alert
+The webapp launch is as shown below:
+![pycharm9](images/10_webApp_launch.png)
 
-![pycharm9](images/Error404Page_Display.png)
+And testing the webapp alerts is triggered by accessing two or more unfound web pages given error message thus:
+![pycharm9.3](images/11_WebApp_404_ErrorPage.png)
+
+The email alert received was triggered by creating an alert in the WebApp resources of the Azure Portal thus:
+
+![pycharm9.6](images/12_HTTP_404_Alert_Creation.png)
 
 #### Email received when the 404 alert was triggered
+And the alert triggered received in the email is as given below thus:
+![pycharm10](images/13_Fired_Alert.png)
 
-![pycharm10](images/404-Email_Alert.png)
+And which was later resolved amicably as seen below:
+![pycharm10.5](images/13_Fired_Alert_Resolved.png)
+
+### WebApp Metrics
+
+#### WebApp Metrics (Average Usage)
+![pycharm14](images/14_WebApp_Http404_SumMetrics.png)
+
+#### WebApp Metrics Overall Usage Summary
+
+![pycharm15](images/15_WebApp_Http404_MetricsOverview.png)
+
+### Log Analytics Statistics
+#### Log Analytics Query Outputs
+
+Log Analytics query qutputs are as follows:
+![pycharm16](images/16_LogAnalytics_Output.png)
+![pycharm18](images/19_LogAnalytics_Output_2.png)
+
+#### Log Analytics Statistics
+
+Log Analytics query qutputs are as follows:
+![pycharm17](images/17_LogAnalytics_Output_Details.png)
+![pycharm20](images/20_LogAnalytics_Output_2_Details.png)
+
+#### Log Analytics Generated Chart
+
+Log Analytics generated chart for the first query output goes thus::
+![pycharm178](images/18_LogAnalytics_Chart.png)
+
 
 ### Helpful resources from Microsoft
 

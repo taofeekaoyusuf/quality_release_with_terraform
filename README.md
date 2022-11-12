@@ -343,13 +343,13 @@ And which was later resolved amicably as seen below:
 ### Log Analytics Statistics
 #### Log Analytics Query Outputs
 
-Log Analytics query qutputs are as follows:
+Log Analytics query outputs are as follows:
 ![pycharm16](images/16_LogAnalytics_Output.png)
 ![pycharm18](images/19_LogAnalytics_Output_2.png)
 
 #### Log Analytics Statistics
 
-Log Analytics query qutputs are as follows:
+Log Analytics detailed query outputs are as follows:
 ![pycharm17](images/17_LogAnalytics_Output_Details.png)
 ![pycharm20](images/20_LogAnalytics_Output_2_Details.png)
 
